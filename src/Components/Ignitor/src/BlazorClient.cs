@@ -95,6 +95,9 @@ namespace Ignitor
 
         public Task<CapturedRenderBatch?> PrepareForNextBatch(TimeSpan? timeout)
         {
+            System.Console.WriteLine($"NextBatchReceived: {NextBatchReceived}");
+            System.Console.WriteLine($"NextBatchReceived.Disposed: {NextBatchReceived?.Disposed}");
+            System.Console.WriteLine($"{new System.Diagnostics.StackTrace()}");
             if (NextBatchReceived != null && !NextBatchReceived.Disposed)
             {
                 throw new InvalidOperationException("Invalid state previous task not completed");
